@@ -72,9 +72,9 @@ func deselect():
 	$Path2D/PathFollow2D/SpriteSelector.hide()
 
 func _on_area_2d_area_entered(area):
-	if area.is_in_group("selector") and Global.is_selecting:
+	if area.is_in_group("selector") and UnitManager.is_selecting:
 		select()
 
 func _on_area_2d_area_exited(area):
-	if area.is_in_group("selector") and Global.is_selecting:
+	if area.is_in_group("selector") and UnitManager.is_selecting:
 		deselect()
