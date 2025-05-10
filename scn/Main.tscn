@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://cswgqi6vv5kck"]
+[gd_scene load_steps=23 format=4 uid="uid://cswgqi6vv5kck"]
 
 [ext_resource type="Script" uid="uid://dxte61wk4t821" path="res://scn/main.gd" id="1_shkxj"]
 [ext_resource type="Texture2D" uid="uid://dn3pfgbns0a4t" path="res://img/tile/demo4_15.png" id="2_ll7cg"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://cbtbrifdcvld6" path="res://scn/Resource.tscn" id="6_rumlh"]
 [ext_resource type="PackedScene" uid="uid://d0m6ngdoufvxi" path="res://scn/Unit.tscn" id="10_ar7f0"]
 [ext_resource type="PackedScene" path="res://scn/base.tscn" id="11_5ebgq"]
+[ext_resource type="Shader" uid="uid://di208hyw40gt8" path="res://scn/bar.gdshader" id="12_ietoa"]
+[ext_resource type="Texture2D" uid="uid://dmhqi5oi7nbaq" path="res://img/ui/slime_progress_bar.png" id="13_d5qbh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ll7cg"]
 texture = ExtResource("2_ll7cg")
@@ -78,6 +80,11 @@ sources/2 = SubResource("TileSetAtlasSource_shkxj")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_no44b"]
 size = Vector2(40, 40)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jg1eq"]
+shader = ExtResource("12_ietoa")
+shader_parameter/purple_team = 0.0
+shader_parameter/green_team = 1.0
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_shkxj")
 
@@ -86,12 +93,13 @@ z_index = -2
 tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAQAAQAAAAAAAAABAAAAAAACAAIAAAABAAEAAAACAAIAAAABAAIAAAACAAIAAAABAAMAAQAAAAAAAAABAAQAAQAAAAAAAAACAAAAAQAAAAAAAAACAAEAAQAAAAAAAAACAAIAAQAAAAAAAAACAAMAAQAAAAAAAAACAAQAAQAAAAAAAAADAAAAAQAAAAAAAAADAAEAAAACAAIAAAADAAIAAAACAAIAAAADAAMAAAACAAIAAAADAAQAAAACAAIAAAAEAAAAAQAAAAAAAAAEAAEAAAACAAIAAAAEAAIAAAACAAIAAAAEAAMAAAACAAIAAAAEAAQAAAACAAIAAAAFAAAAAQAAAAAAAAAFAAEAAQAAAAAAAAAFAAIAAQAAAAAAAAAFAAMAAQAAAAAAAAAFAAQAAQAAAAAAAAAGAAAAAQAAAAAAAAAGAAEAAQAAAAAAAAAGAAIAAAACAAIAAAAGAAMAAAACAAIAAAAGAAQAAQAAAAAAAAAHAAAAAQAAAAAAAAAHAAEAAQAAAAAAAAAHAAIAAAACAAIAAAAHAAMAAAACAAIAAAAHAAQAAQAAAAAAAAAIAAAAAQAAAAAAAAAIAAEAAQAAAAAAAAAIAAIAAAACAAIAAAAIAAMAAAACAAIAAAAIAAQAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_qt5vd")
 
-[node name="TileMapLayerSlime" type="TileMapLayer" parent="." node_paths=PackedStringArray("units")]
+[node name="TileMapLayerSlime" type="TileMapLayer" parent="." node_paths=PackedStringArray("units", "bar")]
 z_index = -2
 tile_map_data = PackedByteArray("AAAAAAAAAQACAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAACAAMAAQAAAAAAAAABAAMAAQAAAAAAAAACAAIAAQAAAAAAAAACAAEAAQAAAAAAAAACAAAAAQABAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAAGAAAAAQAAAAAAAAAHAAAAAQAAAAAAAAAIAAAAAQAAAAAAAAAIAAEAAQAAAAAAAAAHAAEAAQAAAAAAAAAGAAEAAQAAAAAAAAAFAAEAAQAAAAAAAAAFAAIAAQAAAAAAAAAFAAMAAQAAAAAAAAAFAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAAHAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_ar7f0")
 script = ExtResource("5_w5ae3")
 units = [NodePath("../Unit"), NodePath("../Unit2")]
+bar = NodePath("../PercentageDisplayBar")
 
 [node name="Timer" type="Timer" parent="TileMapLayerSlime"]
 wait_time = 0.5
@@ -150,3 +158,17 @@ position = Vector2(1072, 92)
 [node name="Base2" parent="." instance=ExtResource("11_5ebgq")]
 position = Vector2(1080, 572)
 faction = 1
+
+[node name="PercentageDisplayBar" type="TextureRect" parent="."]
+z_index = 2
+material = SubResource("ShaderMaterial_jg1eq")
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 391.0
+offset_top = -53.0
+offset_right = 1391.0
+offset_bottom = 347.0
+grow_horizontal = 2
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("13_d5qbh")
