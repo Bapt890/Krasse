@@ -132,6 +132,7 @@ shape = SubResource("RectangleShape2D_no44b")
 [node name="Resource" parent="." instance=ExtResource("6_rumlh")]
 position = Vector2(82, 219)
 
+
 [node name="Unit" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("10_ar7f0")]
 position = Vector2(64, 64)
 tilemap = NodePath("../TileMapLayer")
@@ -142,3 +143,11 @@ position = Vector2(64, 64)
 tilemap = NodePath("../TileMapLayer")
 init_pos = Vector2(320, 64)
 team = 1
+
+[node name="PlayerBase" parent="." instance=ExtResource("7_rumlh")]
+position = Vector2(1088, 575)
+
+[node name="EnemyBase" parent="." instance=ExtResource("7_rumlh")]
+position = Vector2(961, 65)
+faction = 1
+
