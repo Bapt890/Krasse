@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://scn/global.gd"
+UnitManager="*res://scn/UnitManager.gd"
 ResourceManager="*res://ResourceManager.gd"
 
 [global_group]

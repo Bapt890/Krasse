@@ -39,7 +39,9 @@ func _on_mouse_exited():
 # Si sélectionné et clic droit, déplacement
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_RIGHT and is_selected and event.is_released():
+		# Si Clic droit relâché, est sélectionné, et pas en train de clic gauche (pour la sélection)
+		if event.button_index == MOUSE_BUTTON_RIGHT and is_selected and \
+		event.is_released() and !Input.is_action_pressed("select"):
 			pathfinding()
 
 # Créer un chemin en utilisant astar. Place les points du Path2D.
@@ -48,15 +50,11 @@ func pathfinding():
 	var path = astar.get_id_path(tilemap.local_to_map($Path2D/PathFollow2D.position), \
 		tilemap.local_to_map(get_global_mouse_position()))
 	var index = 0
-	var draw_init_pos : Vector2
 	for pos in path:
 		if index == 0:
 			$Path2D.curve.add_point($Path2D/PathFollow2D.position)
-			draw_init_pos = $Path2D/PathFollow2D.position
 		else:
-			#draw_line(draw_init_pos, pos * tilemap.tile_set.tile_size, Color(1, 0, 0, 1))
 			$Path2D.curve.add_point(pos * tilemap.tile_set.tile_size)
-			draw_init_pos = pos * tilemap.tile_set.tile_size
 		index += 1
 	# Si le path a plus de 1 point (1 point si clic droit au même endroit), le NPC commence au début du chemin
 	if $Path2D.curve.get_baked_length() > 0:
@@ -64,12 +62,12 @@ func pathfinding():
 
 func select():
 	is_selected = true
-	Global.selected_unit_count += 1
+	UnitManager.selected_units.append(self)
 	$AnimationPlayer.play("selector_ring")
 
 func deselect():
 	is_selected = false
-	Global.selected_unit_count -= 1
+	UnitManager.selected_units.erase(self)
 	$AnimationPlayer.stop()
 	$Path2D/PathFollow2D/SpriteSelector.hide()
 
