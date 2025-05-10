@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi6v8j0hytunw"]
+
+[ext_resource type="Script" uid="uid://bod60rca2napm" path="res://Scripts/items.gd" id="1_1o0s7"]
+[ext_resource type="Texture2D" uid="uid://cpbjbl12dcmba" path="res://icon.svg" id="2_1weea"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0nl8"]
+
+[node name="Objet" type="Area2D" groups=["items"]]
+script = ExtResource("1_1o0s7")
+item_name = "Item1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_c0nl8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.172549, 1, 0.168627, 1)
+texture = ExtResource("2_1weea")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
