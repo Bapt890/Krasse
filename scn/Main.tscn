@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=4 uid="uid://cswgqi6vv5kck"]
+
+[ext_resource type="Script" uid="uid://dxte61wk4t821" path="res://scn/main.gd" id="1_shkxj"]
+[ext_resource type="Texture2D" uid="uid://dn3pfgbns0a4t" path="res://img/tile/demo4_15.png" id="2_ll7cg"]
+[ext_resource type="Texture2D" uid="uid://bs3cqd6qogbm2" path="res://img/unit/tile_placeholder.png" id="2_qt5vd"]
+[ext_resource type="Script" uid="uid://mgls5y7214xl" path="res://scn/tile_map_layer_select.gd" id="3_qqvqi"]
+[ext_resource type="Texture2D" uid="uid://x0ksv4hkqbrd" path="res://img/unit/select_rect_placeholder.png" id="6_no44b"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ll7cg"]
+texture = ExtResource("2_ll7cg")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+1:1/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+2:2/0/custom_data_0 = true
+2:3/0 = 0
+2:3/0/custom_data_0 = true
+3:3/0 = 0
+3:3/0/custom_data_0 = true
+3:2/0 = 0
+3:2/0/custom_data_0 = true
+3:1/0 = 0
+2:1/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_qt5vd"]
+tile_size = Vector2i(128, 128)
+navigation_layer_0/layers = 3
+custom_data_layer_0/name = "is_solid"
+custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_ll7cg")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_shkxj"]
+texture = ExtResource("2_qt5vd")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_no44b"]
+tile_size = Vector2i(128, 128)
+navigation_layer_0/layers = 3
+sources/2 = SubResource("TileSetAtlasSource_shkxj")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_no44b"]
+size = Vector2(40, 40)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_shkxj")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAAAAAACAAIAAAABAAEAAAACAAIAAAABAAIAAAACAAIAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAACAAIAAAADAAIAAAACAAIAAAADAAMAAAACAAIAAAADAAQAAAACAAIAAAAEAAAAAAAAAAAAAAAEAAEAAAACAAIAAAAEAAIAAAACAAIAAAAEAAMAAAACAAIAAAAEAAQAAAACAAIAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAACAAIAAAAGAAMAAAACAAIAAAAGAAQAAAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAACAAIAAAAHAAMAAAACAAIAAAAHAAQAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAACAAIAAAAIAAMAAAACAAIAAAAIAAQAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_qt5vd")
+
+[node name="TileMapLayerSelect" type="TileMapLayer" parent="."]
+z_index = -2
+tile_set = SubResource("TileSet_no44b")
+script = ExtResource("3_qqvqi")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(64, 64)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_no44b")
+
+[node name="Area2D" type="Area2D" parent="NinePatchRect" groups=["selector"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NinePatchRect/Area2D"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_no44b")
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/Area2D/CollisionShape2D"]
+texture = ExtResource("6_no44b")

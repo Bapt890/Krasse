@@ -1,0 +1,11 @@
+Sprite2D
+CollisionShape2D
+Area2D
+NinePatchRect
+CharacterBody2D
+Node2D
+PathFollow2D
+Path2D
+TileMapLayer
+TileMap
+AnimationPlayer
