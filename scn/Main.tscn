@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=4 uid="uid://cswgqi6vv5kck"]
+[gd_scene load_steps=12 format=4 uid="uid://cswgqi6vv5kck"]
 
 [ext_resource type="Script" uid="uid://dxte61wk4t821" path="res://scn/main.gd" id="1_shkxj"]
 [ext_resource type="Texture2D" uid="uid://dn3pfgbns0a4t" path="res://img/tile/demo4_15.png" id="2_ll7cg"]
 [ext_resource type="Texture2D" uid="uid://bs3cqd6qogbm2" path="res://img/unit/tile_placeholder.png" id="2_qt5vd"]
 [ext_resource type="Script" uid="uid://mgls5y7214xl" path="res://scn/tile_map_layer_select.gd" id="3_qqvqi"]
 [ext_resource type="Texture2D" uid="uid://x0ksv4hkqbrd" path="res://img/unit/select_rect_placeholder.png" id="6_no44b"]
+[ext_resource type="PackedScene" uid="uid://cbtbrifdcvld6" path="res://scn/Resource.tscn" id="6_rumlh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ll7cg"]
 texture = ExtResource("2_ll7cg")
@@ -73,6 +74,8 @@ offset_bottom = 40.0
 texture = ExtResource("6_no44b")
 
 [node name="Area2D" type="Area2D" parent="NinePatchRect" groups=["selector"]]
+collision_layer = 16
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NinePatchRect/Area2D"]
 position = Vector2(20, 20)
@@ -80,3 +83,6 @@ shape = SubResource("RectangleShape2D_no44b")
 
 [node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/Area2D/CollisionShape2D"]
 texture = ExtResource("6_no44b")
+
+[node name="Resource" parent="." instance=ExtResource("6_rumlh")]
+position = Vector2(82, 219)
