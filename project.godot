@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Slime"
-run/main_scene="res://scn/Main.tscn"
+config/name="Projet Krasse"
+run/main_scene="uid://cq8ikdkvfe5bg"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

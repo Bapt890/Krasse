@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cr4e13bd7mbh"]
+
+[ext_resource type="Script" uid="uid://car8gh231dlv4" path="res://Scripts/mainscript.gd" id="1_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://bl7n3lx1g64f7" path="res://Scenes/unit.tscn" id="2_kry3j"]
+[ext_resource type="PackedScene" uid="uid://cq8ikdkvfe5bg" path="res://Scenes/item2.tscn" id="3_21xkr"]
+[ext_resource type="PackedScene" uid="uid://bi6v8j0hytunw" path="res://Scenes/item1.tscn" id="4_6bp64"]
+
+[node name="Root" type="Node" groups=["items", "units"]]
+script = ExtResource("1_jjvhh")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_kry3j")]
+position = Vector2(518, 63)
+
+[node name="Objet" parent="." instance=ExtResource("3_21xkr")]
+position = Vector2(299, 263)
+
+[node name="Objet2" parent="." instance=ExtResource("4_6bp64")]
+position = Vector2(781, 265)
+
+[node name="Objet3" parent="." instance=ExtResource("3_21xkr")]
+position = Vector2(466, 411)
+
+[node name="Objet4" parent="." instance=ExtResource("4_6bp64")]
+position = Vector2(747, 93)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
