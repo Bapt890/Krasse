@@ -1,15 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbtbrifdcvld6"]
+[gd_scene load_steps=6 format=3 uid="uid://cbtbrifdcvld6"]
 
 [ext_resource type="Script" uid="uid://hdt68d3b07yp" path="res://scn/resource.gd" id="1_0gdv7"]
-[ext_resource type="Texture2D" uid="uid://was2v1dprr3v" path="res://img/res/burger_test.png" id="2_feudh"]
-[ext_resource type="Texture2D" uid="uid://dkov0pt073p5i" path="res://icon.svg" id="2_p18no"]
-[ext_resource type="Texture2D" uid="uid://bfg0ynaccc864" path="res://img/res/pizza_test.png" id="3_gmme7"]
-[ext_resource type="Texture2D" uid="uid://cao4qumpkte2p" path="res://img/res/snadwich_test.png" id="4_tdxgc"]
+[ext_resource type="Texture2D" uid="uid://ct2xmg6smqycv" path="res://img/res/burger.png" id="2_feudh"]
+[ext_resource type="Texture2D" uid="uid://csgacq3cykfj2" path="res://img/res/hotdog.png" id="3_gmme7"]
+[ext_resource type="Texture2D" uid="uid://bdailpruj7ofo" path="res://img/res/pizza.png" id="4_tdxgc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0nl8"]
-size = Vector2(125, 127)
+[sub_resource type="CircleShape2D" id="CircleShape2D_igqx7"]
+radius = 33.5336
 
-[node name="Resource" type="Area2D" groups=["items"]]
+[node name="Resource" type="Area2D"]
 collision_layer = 2
 script = ExtResource("1_0gdv7")
 amount = 100
@@ -17,9 +16,9 @@ random_images = Array[CompressedTexture2D]([ExtResource("2_feudh"), ExtResource(
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
-shape = SubResource("RectangleShape2D_c0nl8")
+shape = SubResource("CircleShape2D_igqx7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_p18no")
+texture = ExtResource("4_tdxgc")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

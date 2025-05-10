@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cao4qumpkte2p"
-path="res://.godot/imported/snadwich_test.png-2028e720dfb87451d8e7842c19cc1f27.ctex"
+uid="uid://bhb0nuvqsrm54"
+path="res://.godot/imported/demo4_15 P.png-f6791d3d3fc55c4468437cf7efd46825.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/res/snadwich_test.png"
-dest_files=["res://.godot/imported/snadwich_test.png-2028e720dfb87451d8e7842c19cc1f27.ctex"]
+source_file="res://img/tile/demo4_15 P.png"
+dest_files=["res://.godot/imported/demo4_15 P.png-f6791d3d3fc55c4468437cf7efd46825.ctex"]
 
 [params]
 

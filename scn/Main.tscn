@@ -1,11 +1,15 @@
-[gd_scene load_steps=12 format=4 uid="uid://cswgqi6vv5kck"]
+[gd_scene load_steps=19 format=4 uid="uid://cswgqi6vv5kck"]
 
 [ext_resource type="Script" uid="uid://dxte61wk4t821" path="res://scn/main.gd" id="1_shkxj"]
 [ext_resource type="Texture2D" uid="uid://dn3pfgbns0a4t" path="res://img/tile/demo4_15.png" id="2_ll7cg"]
 [ext_resource type="Texture2D" uid="uid://bs3cqd6qogbm2" path="res://img/unit/tile_placeholder.png" id="2_qt5vd"]
 [ext_resource type="Script" uid="uid://mgls5y7214xl" path="res://scn/tile_map_layer_select.gd" id="3_qqvqi"]
+[ext_resource type="Texture2D" uid="uid://cbg7qrwil5ab2" path="res://img/tile/ground.png" id="3_rumlh"]
+[ext_resource type="Texture2D" uid="uid://c4cdato7rvqtt" path="res://img/tile/ground_tilemap.png" id="4_edb3p"]
+[ext_resource type="Script" uid="uid://b4ejdnh0h3fqd" path="res://scn/tile_map_layer_slime.gd" id="5_w5ae3"]
 [ext_resource type="Texture2D" uid="uid://x0ksv4hkqbrd" path="res://img/unit/select_rect_placeholder.png" id="6_no44b"]
 [ext_resource type="PackedScene" uid="uid://cbtbrifdcvld6" path="res://scn/Resource.tscn" id="6_rumlh"]
+[ext_resource type="PackedScene" uid="uid://d0m6ngdoufvxi" path="res://scn/Unit.tscn" id="10_ar7f0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ll7cg"]
 texture = ExtResource("2_ll7cg")
@@ -31,12 +35,34 @@ texture_region_size = Vector2i(128, 128)
 0:3/0 = 0
 1:3/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_edb3p"]
+texture = ExtResource("3_rumlh")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_qt5vd"]
 tile_size = Vector2i(128, 128)
 navigation_layer_0/layers = 3
 custom_data_layer_0/name = "is_solid"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_ll7cg")
+sources/1 = SubResource("TileSetAtlasSource_edb3p")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w5ae3"]
+texture = ExtResource("4_edb3p")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/custom_data_0 = -1
+1:0/0 = 0
+2:0/0 = 0
+2:0/0/custom_data_0 = 1
+
+[sub_resource type="TileSet" id="TileSet_ar7f0"]
+tile_size = Vector2i(128, 128)
+navigation_layer_0/layers = 3
+custom_data_layer_0/name = "team"
+custom_data_layer_0/type = 2
+sources/1 = SubResource("TileSetAtlasSource_w5ae3")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_shkxj"]
 texture = ExtResource("2_qt5vd")
@@ -56,16 +82,24 @@ script = ExtResource("1_shkxj")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -2
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAAAAAACAAIAAAABAAEAAAACAAIAAAABAAIAAAACAAIAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAACAAIAAAADAAIAAAACAAIAAAADAAMAAAACAAIAAAADAAQAAAACAAIAAAAEAAAAAAAAAAAAAAAEAAEAAAACAAIAAAAEAAIAAAACAAIAAAAEAAMAAAACAAIAAAAEAAQAAAACAAIAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAACAAIAAAAGAAMAAAACAAIAAAAGAAQAAAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAACAAIAAAAHAAMAAAACAAIAAAAHAAQAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAACAAIAAAAIAAMAAAACAAIAAAAIAAQAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAQAAQAAAAAAAAABAAAAAAACAAIAAAABAAEAAAACAAIAAAABAAIAAAACAAIAAAABAAMAAQAAAAAAAAABAAQAAQAAAAAAAAACAAAAAQAAAAAAAAACAAEAAQAAAAAAAAACAAIAAQAAAAAAAAACAAMAAQAAAAAAAAACAAQAAQAAAAAAAAADAAAAAQAAAAAAAAADAAEAAAACAAIAAAADAAIAAAACAAIAAAADAAMAAAACAAIAAAADAAQAAAACAAIAAAAEAAAAAQAAAAAAAAAEAAEAAAACAAIAAAAEAAIAAAACAAIAAAAEAAMAAAACAAIAAAAEAAQAAAACAAIAAAAFAAAAAQAAAAAAAAAFAAEAAQAAAAAAAAAFAAIAAQAAAAAAAAAFAAMAAQAAAAAAAAAFAAQAAQAAAAAAAAAGAAAAAQAAAAAAAAAGAAEAAQAAAAAAAAAGAAIAAAACAAIAAAAGAAMAAAACAAIAAAAGAAQAAQAAAAAAAAAHAAAAAQAAAAAAAAAHAAEAAQAAAAAAAAAHAAIAAAACAAIAAAAHAAMAAAACAAIAAAAHAAQAAQAAAAAAAAAIAAAAAQAAAAAAAAAIAAEAAQAAAAAAAAAIAAIAAAACAAIAAAAIAAMAAAACAAIAAAAIAAQAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_qt5vd")
+
+[node name="TileMapLayerSlime" type="TileMapLayer" parent="." node_paths=PackedStringArray("units")]
+z_index = -2
+tile_map_data = PackedByteArray("AAAAAAAAAQACAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAACAAMAAQAAAAAAAAABAAMAAQAAAAAAAAACAAIAAQAAAAAAAAACAAEAAQAAAAAAAAACAAAAAQABAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAAGAAAAAQAAAAAAAAAHAAAAAQAAAAAAAAAIAAAAAQAAAAAAAAAIAAEAAQAAAAAAAAAHAAEAAQAAAAAAAAAGAAEAAQAAAAAAAAAFAAEAAQAAAAAAAAAFAAIAAQAAAAAAAAAFAAMAAQAAAAAAAAAFAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAAHAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_ar7f0")
+script = ExtResource("5_w5ae3")
+units = [NodePath("../Unit"), NodePath("../Unit2")]
+
+[node name="Timer" type="Timer" parent="TileMapLayerSlime"]
+wait_time = 0.5
+autostart = true
 
 [node name="TileMapLayerSelect" type="TileMapLayer" parent="."]
 z_index = -2
 tile_set = SubResource("TileSet_no44b")
 script = ExtResource("3_qqvqi")
-
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(64, 64)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 visible = false
@@ -87,7 +121,7 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="Area2D" type="Area2D" parent="NinePatchRect" groups=["selector"]]
+[node name="Area2D" type="Area2D" parent="NinePatchRect"]
 position = Vector2(20, 20)
 collision_layer = 16
 collision_mask = 0
@@ -97,3 +131,14 @@ shape = SubResource("RectangleShape2D_no44b")
 
 [node name="Resource" parent="." instance=ExtResource("6_rumlh")]
 position = Vector2(82, 219)
+
+[node name="Unit" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("10_ar7f0")]
+position = Vector2(64, 64)
+tilemap = NodePath("../TileMapLayer")
+init_pos = Vector2(64, 64)
+
+[node name="Unit2" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("10_ar7f0")]
+position = Vector2(64, 64)
+tilemap = NodePath("../TileMapLayer")
+init_pos = Vector2(320, 64)
+team = 1

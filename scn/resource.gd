@@ -11,7 +11,7 @@ func _ready():
 		var rand = randi_range(0, random_images.size()-1)
 		$Sprite2D.texture = random_images[rand]
 	else:
-		$Sprite2D.texture = load("res://img/res/flask_test.png")
+		$Sprite2D.texture = load("res://img/res/flask.png")
 
 func _on_area_entered(_area):
 	ResourceManager.addResource(type, amount)

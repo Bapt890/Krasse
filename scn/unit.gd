@@ -2,19 +2,28 @@ extends Node2D
 
 class_name Unit
 
-var tilemap : TileMapLayer
+@export var tilemap : TileMapLayer
+var astar = AStarGrid2D.new()
 
 var mouse_hover : bool = false
 var is_selected : bool = false
 
-var astar = AStarGrid2D.new()
-var speed : float = 5.0
+@export var init_pos : Vector2
+@export var speed : float = 5.0
+@export var team : int = 0
+@export var hp : int = 10:
+	set(value):
+		hp = value
+		$Path2D/PathFollow2D/ProgressBarHP.show()
+		$Path2D/PathFollow2D/ProgressBarHP.value = value
+var path_position : Vector2
 
 func _ready():
 	# Empêche le déplacement de boucler
 	$Path2D/PathFollow2D.loop = false
 	# Initialiseze astar, l'objet qui gère le pathfinding
-	astar.region = Rect2i(0, 0, 9, 5)
+	var rect = Rect2i(0, 0, 9, 5)
+	astar.region = rect
 	astar.cell_size = Vector2i(128, 128)
 	astar.default_compute_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
 	astar.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
@@ -23,11 +32,18 @@ func _ready():
 	for cell in tilemap.get_used_cells():
 		if tilemap.get_cell_tile_data(cell).get_custom_data("is_solid"):
 			astar.set_point_solid(cell, true)
+	# HP setup
+	$Path2D/PathFollow2D/ProgressBarHP.max_value = hp
+	# Team
+	$Path2D/PathFollow2D/SpriteSelector.modulate = Color("B51963") if team == 0 else Color("5BA300")
+	$Path2D/PathFollow2D/ProgressBarHP.modulate = Color("Pink") if team == 0 else Color("Green")
+	$Path2D/PathFollow2D.global_position = init_pos
 
 func _process(delta):
+	path_position = $Path2D/PathFollow2D.global_position
 	# Sélectionne l'unité si la souris est sur lui et clic gauche relâché
-	if Input.is_action_just_released("select") and mouse_hover:
-		select()
+	#if Input.is_action_just_released("select") and mouse_hover:
+	#	select()
 	$Path2D/PathFollow2D.progress += speed + delta
 
 func _on_mouse_entered():
@@ -36,45 +52,63 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	mouse_hover = false
 
-# Si sélectionné et clic droit, déplacement
-func _unhandled_input(event):
-	if event is InputEventMouseButton:
-		# Si Clic droit relâché, est sélectionné, et pas en train de clic gauche (pour la sélection)
-		if event.button_index == MOUSE_BUTTON_RIGHT and is_selected and \
-		event.is_released() and !Input.is_action_pressed("select"):
-			pathfinding()
-
 # Créer un chemin en utilisant astar. Place les points du Path2D.
 func pathfinding():
 	$Path2D.curve.clear_points()
-	var path = astar.get_id_path(tilemap.local_to_map($Path2D/PathFollow2D.position), \
+	# Snap la position sur la grille pour éviter des mouvements en diagonale
+	$Path2D/PathFollow2D.global_position = tilemap.local_to_map($Path2D/PathFollow2D.global_position) * Vector2i(128, 128) + Vector2i(64, 64)
+	var path = astar.get_id_path(tilemap.local_to_map($Path2D/PathFollow2D.global_position), \
 		tilemap.local_to_map(get_global_mouse_position()))
 	var index = 0
 	for pos in path:
-		if index == 0:
-			$Path2D.curve.add_point($Path2D/PathFollow2D.position)
-		else:
-			$Path2D.curve.add_point(pos * tilemap.tile_set.tile_size)
+		var point_pos = $Path2D/PathFollow2D.global_position - Vector2(64, 64) if index == 0 \
+			else pos * tilemap.tile_set.tile_size
+		$Path2D.curve.add_point(point_pos)
 		index += 1
 	# Si le path a plus de 1 point (1 point si clic droit au même endroit), le NPC commence au début du chemin
 	if $Path2D.curve.get_baked_length() > 0:
 		$Path2D/PathFollow2D.progress_ratio = 0
+	
 
+func select_animation():
+	$Path2D/PathFollow2D/SpriteSelector.show()
+	var tween = create_tween().set_loops()
+	tween.tween_property($Path2D/PathFollow2D/SpriteSelector, "modulate:a", 0.75, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	tween.tween_property($Path2D/PathFollow2D/SpriteSelector, "modulate:a", 1, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+
+# S'ajoute ou se supprime des unités sélectionnées
 func select():
 	is_selected = true
 	UnitManager.selected_units.append(self)
-	$AnimationPlayer.play("selector_ring")
+	select_animation()
 
 func deselect():
 	is_selected = false
 	UnitManager.selected_units.erase(self)
-	$AnimationPlayer.stop()
 	$Path2D/PathFollow2D/SpriteSelector.hide()
 
+func hurt(amount : int):
+	if $Timer.time_left == 0:
+		hp -= amount
+
 func _on_area_2d_area_entered(area):
-	if area.is_in_group("selector") and UnitManager.is_selecting:
+	if UnitManager.is_selecting:
 		select()
 
 func _on_area_2d_area_exited(area):
-	if area.is_in_group("selector") and UnitManager.is_selecting:
+	if UnitManager.is_selecting:
 		deselect()
+
+# Si l'unité rentre dans l'espace intime d'une autre, elle s'arrête et considère sa case comme solide
+# pendant X secondes
+func _on_area_2d_collider_area_entered(area : Area2D):
+	var area_pos = area.global_position
+	$Path2D.curve.clear_points()
+	astar.set_point_solid(tilemap.local_to_map(area_pos), true)
+	var timer = Timer.new()
+	timer.wait_time = 3.0
+	timer.one_shot = true
+	add_child(timer)
+	timer.start()
+	await timer.timeout
+	astar.set_point_solid(tilemap.local_to_map(area_pos), false)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckxvl52c1ri5m"
-path="res://.godot/imported/flask_test.png-81b3fd2c4c4c18de245d83f85c230068.ctex"
+uid="uid://dyj1i1yhbyqh2"
+path="res://.godot/imported/flask.png-c64c7e142e461b0432ef37f60edd7ced.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/res/flask_test.png"
-dest_files=["res://.godot/imported/flask_test.png-81b3fd2c4c4c18de245d83f85c230068.ctex"]
+source_file="res://img/res/flask.png"
+dest_files=["res://.godot/imported/flask.png-c64c7e142e461b0432ef37f60edd7ced.ctex"]
 
 [params]
 

@@ -6,3 +6,6 @@ res://scn/resource.gd
 res://scn/tile_map_layer_select.gd
 res://scn/unit.gd
 res://scn/global.gd
+res://slime_manager.gd
+res://scn/tile_map_layer_slime.gd
+res://scn/UnitManager.gd

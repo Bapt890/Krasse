@@ -5,13 +5,6 @@ extends Node2D
 var selection_rect : Rect2
 var select_start_pos : Vector2
 
-func _ready():
-	# Test ; Add unit to the scene
-	var unit_instance = unit.instantiate()
-	unit_instance.position = Vector2(64, 64)
-	unit_instance.tilemap = $TileMapLayer
-	add_child(unit_instance)
-
 func _process(_delta):
 	# Si le joueur est en train de sélectionné, dessine le rectangle de sélection et ajuste sa collision
 	if UnitManager.is_selecting:
@@ -28,7 +21,7 @@ func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			UnitManager.is_selecting = true
-			UnitManager.deselectAll()
+			UnitManager.deselect_all()
 			select_start_pos = get_global_mouse_position()
 			$NinePatchRect.position = select_start_pos
 			$NinePatchRect.size = Vector2.ZERO

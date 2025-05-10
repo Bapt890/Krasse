@@ -1,116 +1,70 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0m6ngdoufvxi"]
+[gd_scene load_steps=6 format=3 uid="uid://d0m6ngdoufvxi"]
 
 [ext_resource type="Script" uid="uid://bj6y0rxnoj3jo" path="res://scn/unit.gd" id="1_c34hy"]
 [ext_resource type="Texture2D" uid="uid://cawac3vcddfyc" path="res://img/unit/placeholder.png" id="2_kqw1m"]
 
-[sub_resource type="Animation" id="Animation_ko23l"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Path2D/PathFollow2D/SpriteSelector:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Path2D/PathFollow2D/SpriteSelector:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0, 0, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Path2D/PathFollow2D/SpriteSelector:modulate:a")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-
-[sub_resource type="Animation" id="Animation_3v7po"]
-resource_name = "selector"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Path2D/PathFollow2D/SpriteSelector:visible")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Path2D/PathFollow2D/SpriteSelector:modulate")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.533333, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 0, 0, 0.784314), Color(1, 0, 0, 0.501961), Color(1, 0, 0, 0.784314)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ekfcb"]
-_data = {
-&"RESET": SubResource("Animation_ko23l"),
-&"selector_ring": SubResource("Animation_3v7po")
-}
-
-[sub_resource type="Curve2D" id="Curve2D_3v7po"]
+[sub_resource type="Curve2D" id="Curve2D_c34hy"]
+resource_local_to_scene = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3mix4"]
 radius = 30.0167
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c34hy"]
+size = Vector2(96, 96)
+
 [node name="Unit" type="Node2D"]
 script = ExtResource("1_c34hy")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ekfcb")
-}
-
 [node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_3v7po")
+curve = SubResource("Curve2D_c34hy")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+rotates = false
+loop = false
 
 [node name="SpriteUnit" type="Sprite2D" parent="Path2D/PathFollow2D"]
 texture = ExtResource("2_kqw1m")
 
 [node name="SpriteSelector" type="Sprite2D" parent="Path2D/PathFollow2D"]
 visible = false
-modulate = Color(1, 0, 0, 1)
 z_index = -1
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_kqw1m")
 
-[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D" groups=["unit"]]
-collision_mask = 29
+[node name="Area2DSelect" type="Area2D" parent="Path2D/PathFollow2D"]
+collision_layer = 0
+collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2DSelect"]
 shape = SubResource("CircleShape2D_3mix4")
 
-[connection signal="area_entered" from="Path2D/PathFollow2D/Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Path2D/PathFollow2D/Area2D" to="." method="_on_area_2d_area_exited"]
-[connection signal="mouse_entered" from="Path2D/PathFollow2D/Area2D" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Path2D/PathFollow2D/Area2D" to="." method="_on_mouse_exited"]
+[node name="Area2DCollider" type="Area2D" parent="Path2D/PathFollow2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2DCollider"]
+shape = SubResource("RectangleShape2D_c34hy")
+
+[node name="ProgressBarHP" type="ProgressBar" parent="Path2D/PathFollow2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.423
+offset_top = -40.75
+offset_right = 29.422
+offset_bottom = -36.75
+grow_horizontal = 2
+grow_vertical = 2
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="Path2D/PathFollow2D/Area2DSelect" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Path2D/PathFollow2D/Area2DSelect" to="." method="_on_area_2d_area_exited"]
+[connection signal="mouse_entered" from="Path2D/PathFollow2D/Area2DSelect" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Path2D/PathFollow2D/Area2DSelect" to="." method="_on_mouse_exited"]
+[connection signal="area_entered" from="Path2D/PathFollow2D/Area2DCollider" to="." method="_on_area_2d_collider_area_entered"]
+[connection signal="mouse_entered" from="Path2D/PathFollow2D/Area2DCollider" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Path2D/PathFollow2D/Area2DCollider" to="." method="_on_mouse_exited"]
