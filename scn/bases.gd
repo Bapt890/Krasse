@@ -18,7 +18,7 @@ func update_visual(): #Fonction qui change la couleur de la base en fonction de 
 			if $Label:
 				$Label.text="Ennemi"
 				
-func _input_event(viewport, event, shape_idx): #Fonction créant un popup sur clic gauche d'un batiment
+func _input_event(_viewport, event, _shape_idx): #Fonction créant un popup sur clic gauche d'un batiment
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 		if faction == Faction.PLAYER: # Popup seulement sur une base alliée
 			print("Base alliée cliquée")

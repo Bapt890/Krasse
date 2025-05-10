@@ -91,11 +91,11 @@ func hurt(amount : int):
 	if $Timer.time_left == 0:
 		hp -= amount
 
-func _on_area_2d_area_entered(area):
+func _on_area_2d_area_entered(_area):
 	if UnitManager.is_selecting:
 		select()
 
-func _on_area_2d_area_exited(area):
+func _on_area_2d_area_exited(_area):
 	if UnitManager.is_selecting:
 		deselect()
 

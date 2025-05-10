@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cswgqi6vv5kck"]
+[gd_scene load_steps=20 format=4 uid="uid://cswgqi6vv5kck"]
 
 [ext_resource type="Script" uid="uid://dxte61wk4t821" path="res://scn/main.gd" id="1_shkxj"]
 [ext_resource type="Texture2D" uid="uid://dn3pfgbns0a4t" path="res://img/tile/demo4_15.png" id="2_ll7cg"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://x0ksv4hkqbrd" path="res://img/unit/select_rect_placeholder.png" id="6_no44b"]
 [ext_resource type="PackedScene" uid="uid://cbtbrifdcvld6" path="res://scn/Resource.tscn" id="6_rumlh"]
 [ext_resource type="PackedScene" uid="uid://d0m6ngdoufvxi" path="res://scn/Unit.tscn" id="10_ar7f0"]
+[ext_resource type="PackedScene" path="res://scn/base.tscn" id="11_5ebgq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ll7cg"]
 texture = ExtResource("2_ll7cg")
@@ -132,7 +133,6 @@ shape = SubResource("RectangleShape2D_no44b")
 [node name="Resource" parent="." instance=ExtResource("6_rumlh")]
 position = Vector2(82, 219)
 
-
 [node name="Unit" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("10_ar7f0")]
 position = Vector2(64, 64)
 tilemap = NodePath("../TileMapLayer")
@@ -144,10 +144,9 @@ tilemap = NodePath("../TileMapLayer")
 init_pos = Vector2(320, 64)
 team = 1
 
-[node name="PlayerBase" parent="." instance=ExtResource("7_rumlh")]
-position = Vector2(1088, 575)
+[node name="Base" parent="." instance=ExtResource("11_5ebgq")]
+position = Vector2(1072, 92)
 
-[node name="EnemyBase" parent="." instance=ExtResource("7_rumlh")]
-position = Vector2(961, 65)
+[node name="Base2" parent="." instance=ExtResource("11_5ebgq")]
+position = Vector2(1080, 572)
 faction = 1
-
