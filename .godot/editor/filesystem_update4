@@ -1,8 +1,7 @@
 res://scn/Main.tscn
-res://scn/main.gd
-res://scn/Unit.tscn
+res://scn/popup_panel.gd
+res://scn/building.tscn
+res://scn/building.gd
 res://scn/Resource.tscn
-res://scn/resource.gd
-res://scn/tile_map_layer_select.gd
-res://scn/unit.gd
-res://scn/global.gd
+res://scn/Unit.tscn
+res://scn/Factions.gd
