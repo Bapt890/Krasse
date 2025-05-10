@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 UnitManager="*res://scn/UnitManager.gd"
 ResourceManager="*res://ResourceManager.gd"
 Factions="*res://scn/Factions.gd"
+BoutiquePanel="*res://scn/BoutiquePanel.tscn"
 
 [global_group]
 

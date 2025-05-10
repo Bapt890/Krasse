@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://cun2o8ovmd1tt"]
+
+[ext_resource type="Script" uid="uid://crm7pb05clr17" path="res://scn/popup_panel.gd" id="3_noemu"]
+
+[node name="PopupPanel" type="PopupPanel"]
+title = "Boutique"
+size = Vector2i(134, 100)
+visible = true
+script = ExtResource("3_noemu")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 130.0
+offset_bottom = 96.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 130.0
+offset_bottom = 96.0
+
+[node name="Unit1" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Unit1"
+
+[node name="Unit2" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Unit2"
+
+[node name="Cancel" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "X"

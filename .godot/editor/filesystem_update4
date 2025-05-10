@@ -5,3 +5,9 @@ res://scn/building.gd
 res://scn/Resource.tscn
 res://scn/Unit.tscn
 res://scn/Factions.gd
+res://base.gd
+res://scn/base.tscn
+res://scn/base.gd
+res://scn/PopupPanelBase.tscn
+res://scn/bases.gd
+res://scn/BoutiquePanel.tscn
