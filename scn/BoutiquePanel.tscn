@@ -22,12 +22,15 @@ offset_bottom = 96.0
 
 [node name="Unit1" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+action_mode = 0
 text = "Unit1"
 
 [node name="Unit2" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+action_mode = 0
 text = "Unit2"
 
 [node name="Cancel" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+action_mode = 0
 text = "X"
