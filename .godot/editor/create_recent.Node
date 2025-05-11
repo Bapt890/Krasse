@@ -1,3 +1,6 @@
+Label
+HBoxContainer
+CanvasLayer
 Node
 AnimationPlayer
 Timer
@@ -9,6 +12,3 @@ ColorRect
 CollisionShape2D
 Area2D
 StaticBody2D
-ColorRect
-NinePatchRect
-CharacterBody2D
