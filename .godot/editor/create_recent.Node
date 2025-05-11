@@ -1,9 +1,9 @@
-TextureRect
-Button
-MenuButton
-CanvasLayer
 HBoxContainer
+VBoxContainer
+TextureRect
+TextureButton
 Label
+CanvasLayer
 Node
 AnimationPlayer
 Timer

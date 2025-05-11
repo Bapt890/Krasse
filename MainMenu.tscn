@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1vv75487w5h8"]
+[gd_scene load_steps=6 format=3 uid="uid://dfycghihkru6s"]
 
-[ext_resource type="Script" uid="uid://cuw6qh3h1ulee" path="res://MainMenu.gd" id="1_eiy7p"]
-[ext_resource type="Texture2D" uid="uid://dmni7xn28ojg0" path="res://img/ui/MenuBoard.png" id="2_iwfq2"]
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_eiy7p"]
+[ext_resource type="Texture2D" uid="uid://3y50c3x3twhv" path="res://img/ui/Menufond.png" id="2_h7a2f"]
 [ext_resource type="Texture2D" uid="uid://bauvarldnvd8j" path="res://img/ui/Jouer.png" id="3_iwfq2"]
 [ext_resource type="Texture2D" uid="uid://bj3jhilh7efrj" path="res://img/ui/Quitter.png" id="4_7r1g0"]
 [ext_resource type="Texture2D" uid="uid://plfaou2mnqmr" path="res://img/ui/Credits.png" id="5_cqjrg"]
@@ -12,8 +12,8 @@ script = ExtResource("1_eiy7p")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Menufond" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(960, 540)
-texture = ExtResource("2_iwfq2")
+position = Vector2(963, 542)
+texture = ExtResource("2_h7a2f")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 offset_left = 175.0

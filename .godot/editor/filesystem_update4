@@ -4,8 +4,12 @@ res://scn/Unit.tscn
 res://scn/Resource.tscn
 res://scn/base.tscn
 res://scn/spawner.tscn
-res://MainMenu.tscn
-res://Credits.tscn
-res://credits.gd
-res://MainMenu.gd
+res://scn/camera_2d.gd
+res://ResourceManager.gd
 res://scn/UIManager.gd
+res://scn/popup_panel.gd
+res://scn/bases.gd
+res://MainMenu.tscn
+res://scn/tile_map_layer_slime.gd
+res://scn/BoutiquePanel.tscn
+res://scn/unit.gd
