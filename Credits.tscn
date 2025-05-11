@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8nbk1aqcumol"]
+
+[ext_resource type="Script" uid="uid://ducxf1olwa080" path="res://credits.gd" id="1_4qwwl"]
+[ext_resource type="Texture2D" uid="uid://dwajvwpgtl8q5" path="res://img/ui/creditsmenu.png" id="1_ynf4x"]
+[ext_resource type="Texture2D" uid="uid://b8524ahrcais2" path="res://img/ui/Croix.png" id="2_obosj"]
+
+[node name="Credits" type="Node2D"]
+script = ExtResource("1_4qwwl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Retour" type="Button" parent="CanvasLayer"]
+offset_left = 1534.0
+offset_top = 158.0
+offset_right = 1585.0
+offset_bottom = 221.0
+icon = ExtResource("2_obosj")
+
+[node name="Creditsmenu" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_ynf4x")

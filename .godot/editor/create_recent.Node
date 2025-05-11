@@ -1,7 +1,8 @@
+Button
+CanvasLayer
 TextureRect
 HBoxContainer
 Label
-CanvasLayer
 Node
 AnimationPlayer
 Timer

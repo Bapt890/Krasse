@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3y50c3x3twhv"
-path="res://.godot/imported/Menufond.png-3848414da90935b4117a05f0e55a313a.ctex"
+uid="uid://b8524ahrcais2"
+path="res://.godot/imported/Croix.png-95ed2db1852bd942af7fe06ba1d8c944.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/ui/Menufond.png"
-dest_files=["res://.godot/imported/Menufond.png-3848414da90935b4117a05f0e55a313a.ctex"]
+source_file="res://img/ui/Croix.png"
+dest_files=["res://.godot/imported/Croix.png-95ed2db1852bd942af7fe06ba1d8c944.ctex"]
 
 [params]
 

@@ -1,1 +1,10 @@
+res://scn/Main.tscn
 res://scn/bar.gdshader
+res://scn/Unit.tscn
+res://scn/Resource.tscn
+res://scn/base.tscn
+res://scn/spawner.tscn
+res://MainMenu.tscn
+res://Credits.tscn
+res://credits.gd
+res://MainMenu.gd
