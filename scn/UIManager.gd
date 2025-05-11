@@ -19,7 +19,7 @@ func _process(delta):
 		total_time -= delta
 		var minutes = int(total_time) / 60
 		var seconds = int(total_time) % 60
-		label.text = "%02d:%02d" % [minutes, seconds]
+		$HUD/TextureRect/Label.text = "%02d:%02d" % [minutes, seconds]
 	else:
-		label.text = "00:00"
+		$HUD/TextureRect/Label.text = "00:00"
 	
