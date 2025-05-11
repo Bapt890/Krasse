@@ -1,6 +1,7 @@
-Button
-CanvasLayer
 TextureRect
+Button
+MenuButton
+CanvasLayer
 HBoxContainer
 Label
 Node
@@ -11,5 +12,3 @@ Control
 ProgressBar
 ColorRect
 CollisionShape2D
-Area2D
-StaticBody2D

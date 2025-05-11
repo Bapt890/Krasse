@@ -8,3 +8,4 @@ res://MainMenu.tscn
 res://Credits.tscn
 res://credits.gd
 res://MainMenu.gd
+res://scn/UIManager.gd

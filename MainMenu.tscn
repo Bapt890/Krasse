@@ -23,12 +23,15 @@ offset_bottom = 1009.0
 
 [node name="Jouer" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
+action_mode = 0
 icon = ExtResource("3_iwfq2")
 
 [node name="Quitter" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
+action_mode = 0
 icon = ExtResource("4_7r1g0")
 
 [node name="Credits" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
+action_mode = 0
 icon = ExtResource("5_cqjrg")

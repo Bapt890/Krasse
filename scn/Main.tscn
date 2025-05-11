@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://cswgqi6vv5kck"]
+[gd_scene load_steps=34 format=4 uid="uid://cswgqi6vv5kck"]
 
 [ext_resource type="Script" uid="uid://dxte61wk4t821" path="res://scn/main.gd" id="1_shkxj"]
 [ext_resource type="Script" uid="uid://y18k6ocw5off" path="res://scn/camera_2d.gd" id="2_d5qbh"]
@@ -18,6 +18,7 @@
 [ext_resource type="FontFile" uid="uid://ca0schlahajo3" path="res://Freich.otf" id="6_rk6lf"]
 [ext_resource type="Texture2D" uid="uid://dyj1i1yhbyqh2" path="res://img/res/flask.png" id="7_0tjt0"]
 [ext_resource type="PackedScene" uid="uid://d0m6ngdoufvxi" path="res://scn/Unit.tscn" id="10_ar7f0"]
+[ext_resource type="Texture2D" uid="uid://6h5vtmt5wymu" path="res://img/ui/Menu.png" id="10_wjl8o"]
 [ext_resource type="PackedScene" uid="uid://b24tp47i2av7f" path="res://scn/base.tscn" id="11_5ebgq"]
 [ext_resource type="Shader" uid="uid://di208hyw40gt8" path="res://scn/bar.gdshader" id="12_ietoa"]
 [ext_resource type="Texture2D" uid="uid://dmhqi5oi7nbaq" path="res://img/ui/slime_progress_bar.png" id="13_d5qbh"]
@@ -233,6 +234,30 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("6_rk6lf")
 theme_override_font_sizes/font_size = 30
 text = "x 500"
+
+[node name="TextureRect2" type="TextureRect" parent="UIManager/HUD"]
+offset_left = 1552.0
+offset_top = 944.0
+offset_right = 2064.0
+offset_bottom = 1156.0
+scale = Vector2(0.600315, 0.537059)
+texture = ExtResource("10_wjl8o")
+
+[node name="MenuButton" type="Button" parent="UIManager/HUD/TextureRect2"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -445.368
+offset_top = -152.416
+offset_right = 74.6317
+offset_bottom = 67.5837
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.754845, 0.424904)
+action_mode = 0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -2
