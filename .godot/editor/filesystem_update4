@@ -1,6 +1,5 @@
 res://scn/Main.tscn
 res://scn/bar.gdshader
-res://scn/Resource.tscn
-res://scn/popup_panel.gd
 res://scn/Unit.tscn
-res://ResourceManager.gd
+res://scn/Resource.tscn
+res://scn/camera_2d.gd

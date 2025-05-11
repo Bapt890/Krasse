@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=4 uid="uid://cswgqi6vv5kck"]
+[gd_scene load_steps=24 format=4 uid="uid://cswgqi6vv5kck"]
 
 [ext_resource type="Script" uid="uid://dxte61wk4t821" path="res://scn/main.gd" id="1_shkxj"]
+[ext_resource type="Script" uid="uid://y18k6ocw5off" path="res://scn/camera_2d.gd" id="2_d5qbh"]
 [ext_resource type="Texture2D" uid="uid://dn3pfgbns0a4t" path="res://img/tile/demo4_15.png" id="2_ll7cg"]
 [ext_resource type="Texture2D" uid="uid://bs3cqd6qogbm2" path="res://img/unit/tile_placeholder.png" id="2_qt5vd"]
 [ext_resource type="Script" uid="uid://mgls5y7214xl" path="res://scn/tile_map_layer_select.gd" id="3_qqvqi"]
@@ -9,7 +10,7 @@
 [ext_resource type="Script" uid="uid://b4ejdnh0h3fqd" path="res://scn/tile_map_layer_slime.gd" id="5_w5ae3"]
 [ext_resource type="Texture2D" uid="uid://x0ksv4hkqbrd" path="res://img/unit/select_rect_placeholder.png" id="6_no44b"]
 [ext_resource type="PackedScene" uid="uid://cbtbrifdcvld6" path="res://scn/Resource.tscn" id="6_rumlh"]
-[ext_resource type="PackedScene" uid="uid://d0m6ngdoufvxi" path="res://scn/unit.tscn" id="10_ar7f0"]
+[ext_resource type="PackedScene" uid="uid://d0m6ngdoufvxi" path="res://scn/Unit.tscn" id="10_ar7f0"]
 [ext_resource type="PackedScene" uid="uid://dp8pctmc3jyr4" path="res://scn/base.tscn" id="11_5ebgq"]
 [ext_resource type="Shader" uid="uid://di208hyw40gt8" path="res://scn/bar.gdshader" id="12_ietoa"]
 [ext_resource type="Texture2D" uid="uid://dmhqi5oi7nbaq" path="res://img/ui/slime_progress_bar.png" id="13_d5qbh"]
@@ -87,6 +88,10 @@ shader_parameter/green_team = 1.0
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_shkxj")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(641, 386)
+script = ExtResource("2_d5qbh")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -2
