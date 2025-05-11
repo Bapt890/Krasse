@@ -4,33 +4,34 @@
 
 [node name="PopupPanel" type="PopupPanel"]
 title = "Boutique"
-size = Vector2i(134, 100)
+size = Vector2i(254, 100)
 visible = true
 script = ExtResource("3_noemu")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 130.0
+offset_right = 250.0
 offset_bottom = 96.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 130.0
+offset_right = 250.0
 offset_bottom = 96.0
 
 [node name="Unit1" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 action_mode = 0
-text = "Unit1"
+text = "Skinny Unit"
 
 [node name="Unit2" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 action_mode = 0
-text = "Unit2"
+text = "Boom Unit"
 
 [node name="Cancel" type="Button" parent="HBoxContainer"]
+modulate = Color(1, 0.0784314, 0.34902, 1)
 layout_mode = 2
 action_mode = 0
-text = "X"
+text = "Close"

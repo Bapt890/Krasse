@@ -28,6 +28,11 @@ shader = ExtResource("12_ietoa")
 shader_parameter/purple_team = 0.0
 shader_parameter/green_team = 1.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_x1yfl"]
+font_size = 50
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ll7cg"]
 texture = ExtResource("2_ll7cg")
 texture_region_size = Vector2i(128, 128)
@@ -134,9 +139,24 @@ script = ExtResource("3_x1yfl")
 
 [node name="HUD" type="CanvasLayer" parent="UIManager"]
 
+[node name="PercentageDisplayBar" type="TextureRect" parent="UIManager/HUD"]
+z_index = 2
+material = SubResource("ShaderMaterial_jg1eq")
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 518.0
+offset_top = -19.0
+offset_right = 518.0
+offset_bottom = 381.0
+grow_horizontal = 2
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("13_d5qbh")
+
 [node name="TimerLabel" type="Label" parent="UIManager/HUD"]
 offset_right = 40.0
 offset_bottom = 23.0
+text = "Timer"
+label_settings = SubResource("LabelSettings_x1yfl")
 
 [node name="ResourceDisplay" type="HBoxContainer" parent="UIManager/HUD"]
 anchors_preset = 1
