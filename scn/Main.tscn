@@ -9,8 +9,8 @@
 [ext_resource type="Script" uid="uid://b4ejdnh0h3fqd" path="res://scn/tile_map_layer_slime.gd" id="5_w5ae3"]
 [ext_resource type="Texture2D" uid="uid://x0ksv4hkqbrd" path="res://img/unit/select_rect_placeholder.png" id="6_no44b"]
 [ext_resource type="PackedScene" uid="uid://cbtbrifdcvld6" path="res://scn/Resource.tscn" id="6_rumlh"]
-[ext_resource type="PackedScene" uid="uid://d0m6ngdoufvxi" path="res://scn/Unit.tscn" id="10_ar7f0"]
-[ext_resource type="PackedScene" path="res://scn/base.tscn" id="11_5ebgq"]
+[ext_resource type="PackedScene" uid="uid://d0m6ngdoufvxi" path="res://scn/unit.tscn" id="10_ar7f0"]
+[ext_resource type="PackedScene" uid="uid://dp8pctmc3jyr4" path="res://scn/base.tscn" id="11_5ebgq"]
 [ext_resource type="Shader" uid="uid://di208hyw40gt8" path="res://scn/bar.gdshader" id="12_ietoa"]
 [ext_resource type="Texture2D" uid="uid://dmhqi5oi7nbaq" path="res://img/ui/slime_progress_bar.png" id="13_d5qbh"]
 

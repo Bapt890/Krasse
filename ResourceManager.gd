@@ -10,5 +10,6 @@ func substractResource(type : int, amount : int = 1):
 	resources[type] -= amount
 	updateUI()
 
+
 func updateUI():
 	print(resources)
