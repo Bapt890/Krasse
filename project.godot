@@ -19,7 +19,14 @@ config/icon="res://icon.svg"
 
 UnitManager="*res://scn/UnitManager.gd"
 ResourceManager="*res://ResourceManager.gd"
+Factions="*res://scn/Factions.gd"
 BoutiquePanel="*res://scn/BoutiquePanel.tscn"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
 
 [input]
 

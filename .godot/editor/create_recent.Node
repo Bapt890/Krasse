@@ -1,7 +1,9 @@
-Control
-Sprite2D
-TextureRect
+Node
+AnimationPlayer
 Timer
+Sprite2D
+Control
+TextureRect
 ProgressBar
 ColorRect
 CollisionShape2D
@@ -10,5 +12,3 @@ StaticBody2D
 ColorRect
 NinePatchRect
 CharacterBody2D
-Node2D
-PathFollow2D

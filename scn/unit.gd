@@ -16,13 +16,15 @@ var is_selected : bool = false
 		hp = value
 		$Path2D/PathFollow2D/ProgressBarHP.show()
 		$Path2D/PathFollow2D/ProgressBarHP.value = value
+		if value <= 0:
+			die()
 var path_position : Vector2
 
 func _ready():
 	# Empêche le déplacement de boucler
 	$Path2D/PathFollow2D.loop = false
 	# Initialiseze astar, l'objet qui gère le pathfinding
-	var rect = Rect2i(0, 0, 9, 5)
+	var rect = Rect2i(0, 0, 52, 22)
 	astar.region = rect
 	astar.cell_size = Vector2i(128, 128)
 	astar.default_compute_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
@@ -37,9 +39,16 @@ func _ready():
 	# Team
 	$Path2D/PathFollow2D/SpriteSelector.modulate = Color("B51963") if team == 0 else Color("5BA300")
 	$Path2D/PathFollow2D/ProgressBarHP.modulate = Color("Pink") if team == 0 else Color("Green")
+	if team == 1: 
+		$Path2D/PathFollow2D/SpriteUnit.texture = load("res://img/unit/standard_green.png")
+		$Path2D/PathFollow2D/Area2DCollider.add_to_group("green")
 	$Path2D/PathFollow2D.global_position = init_pos
 
 func _process(delta):
+	if  path_position.x - $Path2D/PathFollow2D.global_position.x > 0:
+		$Path2D/PathFollow2D/SpriteUnit.flip_h = false
+	elif path_position.x - $Path2D/PathFollow2D.global_position.x < 0:
+		$Path2D/PathFollow2D/SpriteUnit.flip_h = true
 	path_position = $Path2D/PathFollow2D.global_position
 	# Sélectionne l'unité si la souris est sur lui et clic gauche relâché
 	#if Input.is_action_just_released("select") and mouse_hover:
@@ -91,6 +100,10 @@ func hurt(amount : int):
 	if $Timer.time_left == 0:
 		hp -= amount
 
+func die():
+	UnitManager.selected_units.erase(self)
+	queue_free()
+
 func _on_area_2d_area_entered(_area):
 	if UnitManager.is_selecting:
 		select()
@@ -102,6 +115,8 @@ func _on_area_2d_area_exited(_area):
 # Si l'unité rentre dans l'espace intime d'une autre, elle s'arrête et considère sa case comme solide
 # pendant X secondes
 func _on_area_2d_collider_area_entered(area : Area2D):
+	if area.is_in_group("purple") and team == 1 or area.is_in_group("green") and team == 0:
+		die()
 	var area_pos = area.global_position
 	$Path2D.curve.clear_points()
 	astar.set_point_solid(tilemap.local_to_map(area_pos), true)

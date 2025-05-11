@@ -1,13 +1,51 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0m6ngdoufvxi"]
+[gd_scene load_steps=10 format=3 uid="uid://d0m6ngdoufvxi"]
 
 [ext_resource type="Script" uid="uid://bj6y0rxnoj3jo" path="res://scn/unit.gd" id="1_c34hy"]
+[ext_resource type="Texture2D" uid="uid://bor4ubqt40w72" path="res://img/unit/standard_purple.png" id="2_f4pb8"]
 [ext_resource type="Texture2D" uid="uid://cawac3vcddfyc" path="res://img/unit/placeholder.png" id="2_kqw1m"]
 
 [sub_resource type="Curve2D" id="Curve2D_c34hy"]
 resource_local_to_scene = true
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3mix4"]
-radius = 30.0167
+[sub_resource type="Animation" id="Animation_kqw1m"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.966667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.18), Vector2(0.18, 0.2), Vector2(0.2, 0.18)]
+}
+
+[sub_resource type="Animation" id="Animation_f4pb8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.2, 0.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sfyiv"]
+_data = {
+&"RESET": SubResource("Animation_f4pb8"),
+&"new_animation": SubResource("Animation_kqw1m")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqw1m"]
+size = Vector2(96, 51)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c34hy"]
 size = Vector2(96, 96)
@@ -23,12 +61,19 @@ rotates = false
 loop = false
 
 [node name="SpriteUnit" type="Sprite2D" parent="Path2D/PathFollow2D"]
-texture = ExtResource("2_kqw1m")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_f4pb8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D/PathFollow2D/SpriteUnit"]
+libraries = {
+&"": SubResource("AnimationLibrary_sfyiv")
+}
+autoplay = "new_animation"
 
 [node name="SpriteSelector" type="Sprite2D" parent="Path2D/PathFollow2D"]
 visible = false
 z_index = -1
-scale = Vector2(1.2, 1.2)
+scale = Vector2(1.775, 1.775)
 texture = ExtResource("2_kqw1m")
 
 [node name="Area2DSelect" type="Area2D" parent="Path2D/PathFollow2D"]
@@ -36,9 +81,10 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2DSelect"]
-shape = SubResource("CircleShape2D_3mix4")
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_kqw1m")
 
-[node name="Area2DCollider" type="Area2D" parent="Path2D/PathFollow2D"]
+[node name="Area2DCollider" type="Area2D" parent="Path2D/PathFollow2D" groups=["green", "purple"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2DCollider"]
 shape = SubResource("RectangleShape2D_c34hy")
