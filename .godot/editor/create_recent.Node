@@ -1,6 +1,7 @@
-Label
 HBoxContainer
+Button
 CanvasLayer
+Label
 Node
 AnimationPlayer
 Timer
@@ -11,4 +12,3 @@ ProgressBar
 ColorRect
 CollisionShape2D
 Area2D
-StaticBody2D

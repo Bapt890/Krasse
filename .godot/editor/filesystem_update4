@@ -1,8 +1,10 @@
-res://scn/Main.tscn
+res://scn/BoutiquePanel.tscn
 res://scn/bar.gdshader
-res://scn/UIManager.gd
-res://ResourceManager.gd
+res://scn/Main.tscn
+res://scn/Unit.tscn
 res://scn/Resource.tscn
 res://scn/base.tscn
 res://scn/spawner.tscn
-res://scn/Unit.tscn
+res://scn/main.gd
+res://MainMenu.tscn
+res://MainMenu.gd

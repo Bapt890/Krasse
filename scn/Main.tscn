@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=29 format=4 uid="uid://cswgqi6vv5kck"]
+=======
+[gd_scene load_steps=27 format=4 uid="uid://cswgqi6vv5kck"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" uid="uid://dxte61wk4t821" path="res://scn/main.gd" id="1_shkxj"]
 [ext_resource type="Script" uid="uid://y18k6ocw5off" path="res://scn/camera_2d.gd" id="2_d5qbh"]
@@ -14,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://x0ksv4hkqbrd" path="res://img/unit/select_rect_placeholder.png" id="6_no44b"]
 [ext_resource type="Texture2D" uid="uid://cia7rm5w2i0hx" path="res://img/tile/void.png" id="6_p3hhe"]
 [ext_resource type="PackedScene" uid="uid://cbtbrifdcvld6" path="res://scn/Resource.tscn" id="6_rumlh"]
-[ext_resource type="PackedScene" uid="uid://d0m6ngdoufvxi" path="res://scn/unit.tscn" id="10_ar7f0"]
+[ext_resource type="PackedScene" uid="uid://d0m6ngdoufvxi" path="res://scn/Unit.tscn" id="10_ar7f0"]
 [ext_resource type="PackedScene" uid="uid://b24tp47i2av7f" path="res://scn/base.tscn" id="11_5ebgq"]
 [ext_resource type="Shader" uid="uid://di208hyw40gt8" path="res://scn/bar.gdshader" id="12_ietoa"]
 [ext_resource type="Texture2D" uid="uid://dmhqi5oi7nbaq" path="res://img/ui/slime_progress_bar.png" id="13_d5qbh"]
@@ -23,6 +27,11 @@
 shader = ExtResource("12_ietoa")
 shader_parameter/purple_team = 0.0
 shader_parameter/green_team = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_x1yfl"]
+font_size = 50
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ll7cg"]
 texture = ExtResource("2_ll7cg")
@@ -126,21 +135,32 @@ script = ExtResource("3_x1yfl")
 
 [node name="HUD" type="CanvasLayer" parent="UIManager"]
 
+[node name="PercentageDisplayBar" type="TextureRect" parent="UIManager/HUD"]
+z_index = 2
+material = SubResource("ShaderMaterial_jg1eq")
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 518.0
+offset_top = -19.0
+offset_right = 518.0
+offset_bottom = 381.0
+grow_horizontal = 2
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("13_d5qbh")
+
 [node name="TimerLabel" type="Label" parent="UIManager/HUD"]
 offset_right = 40.0
 offset_bottom = 23.0
+text = "Timer"
+label_settings = SubResource("LabelSettings_x1yfl")
 
 [node name="ResourceDisplay" type="HBoxContainer" parent="UIManager/HUD"]
-anchors_preset = 6
+anchors_preset = 1
 anchor_left = 1.0
-anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 0.5
 offset_left = -166.0
-offset_top = -20.0
-offset_bottom = 20.0
+offset_bottom = 40.0
 grow_horizontal = 0
-grow_vertical = 2
 
 [node name="Resource1" type="Label" parent="UIManager/HUD/ResourceDisplay"]
 layout_mode = 2
@@ -149,20 +169,6 @@ text = "Resource1"
 [node name="Resource2" type="Label" parent="UIManager/HUD/ResourceDisplay"]
 layout_mode = 2
 text = "Resource2"
-
-[node name="PercentageDisplayBar" type="TextureRect" parent="UIManager/HUD"]
-z_index = 2
-material = SubResource("ShaderMaterial_jg1eq")
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -569.0
-offset_top = -53.0
-offset_right = 431.0
-offset_bottom = 347.0
-grow_horizontal = 2
-scale = Vector2(0.45, 0.45)
-texture = ExtResource("13_d5qbh")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -2
