@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://duol8iwsb4tuv" path="res://scn/bases.gd" id="1_uc46k"]
 [ext_resource type="Texture2D" uid="uid://cy62nhydue8s6" path="res://img/building/one_purple.png" id="2_pnv5i"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pnv5i"]
-size = Vector2(131, 129)
+[sub_resource type="CircleShape2D" id="CircleShape2D_pnv5i"]
+radius = 157.539
 
 [node name="Base" type="Area2D"]
 collision_layer = 4
@@ -12,8 +12,9 @@ script = ExtResource("1_uc46k")
 faction = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 10)
 texture = ExtResource("2_pnv5i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)
-shape = SubResource("RectangleShape2D_pnv5i")
+shape = SubResource("CircleShape2D_pnv5i")

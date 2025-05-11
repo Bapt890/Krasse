@@ -1,5 +1,7 @@
-TextureRect
 HBoxContainer
+VBoxContainer
+TextureRect
+TextureButton
 Label
 CanvasLayer
 Node
@@ -10,5 +12,3 @@ Control
 ProgressBar
 ColorRect
 CollisionShape2D
-Area2D
-StaticBody2D

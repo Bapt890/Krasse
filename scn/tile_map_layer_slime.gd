@@ -1,6 +1,8 @@
 extends TileMapLayer
 
 @export var bar : TextureRect
+@export var purple_label : Label
+@export var green_label : Label
 
 func _process(_delta):
 	for unit : Unit in $UnitList.get_children():
@@ -20,4 +22,6 @@ func _process(_delta):
 			1:
 				green += 1
 	bar.material.set_shader_parameter("purple_team", purple/get_used_cells().size())
+	purple_label.text = "%.02f%%" % (purple / get_used_cells().size() * 100)
 	bar.material.set_shader_parameter("green_team", 1 - green/get_used_cells().size())
+	green_label.text = "%.02f%%" % (green / get_used_cells().size() * 100)

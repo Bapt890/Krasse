@@ -42,6 +42,8 @@ func _ready():
 	if team == 1: 
 		$Path2D/PathFollow2D/SpriteUnit.texture = load("res://img/unit/standard_green.png")
 		$Path2D/PathFollow2D/Area2DCollider.add_to_group("green")
+	elif team == 0:
+		$Path2D/PathFollow2D/Area2DCollider.add_to_group("purple")
 	$Path2D/PathFollow2D.global_position = init_pos
 
 func _process(delta):
