@@ -49,7 +49,6 @@ _data = {
 scale = Vector2(1e-05, 1e-05)
 collision_layer = 2
 script = ExtResource("1_0gdv7")
-amount = 100
 random_images = Array[CompressedTexture2D]([ExtResource("2_feudh"), ExtResource("3_gmme7"), ExtResource("4_tdxgc")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
