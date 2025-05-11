@@ -1,13 +1,7 @@
-res://ResourceManager.gd
-res://scn/popup_panel.gd
 res://scn/Main.tscn
 res://scn/bar.gdshader
 res://scn/Unit.tscn
 res://scn/Resource.tscn
 res://scn/base.tscn
-res://scn/unit.gd
-res://scn/tile_map_layer_slime.gd
 res://scn/spawner.tscn
-res://scn/spawner.gd
-res://scn/items.gd
-res://scn/resource.gd
+res://scn/camera_2d.gd

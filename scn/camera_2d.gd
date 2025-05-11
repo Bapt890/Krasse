@@ -3,6 +3,7 @@ extends Camera2D
 var speed = 800
 
 var edge_margin = 20
+var cam_limit : Vector2 = Vector2(6650, 2800)
 
 func _process(delta):
 	var direction = Vector2.ZERO
@@ -35,7 +36,9 @@ func _process(delta):
 	if direction != Vector2.ZERO:
 		direction = direction.normalized()
 		global_position += direction * speed * delta
-		
+	
+	global_position.x = clamp(global_position.x, 960 / zoom.x, cam_limit.x - 960 / zoom.x)
+	global_position.y = clamp(global_position.y, 540  / zoom.y, cam_limit.y - 540  / zoom.y)
 
 # Zoom de la caméra
 var zoom_speed := 0.1
@@ -53,3 +56,4 @@ func _zoom_camera(amount):
 	zoom += Vector2(amount, amount)
 	zoom.x = clamp(zoom.x, min_zoom, max_zoom)
 	zoom.y = clamp(zoom.y, min_zoom, max_zoom)
+	speed = 800 / zoom.x

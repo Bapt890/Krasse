@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://cswgqi6vv5kck"]
+[gd_scene load_steps=25 format=4 uid="uid://cswgqi6vv5kck"]
 
 [ext_resource type="Script" uid="uid://dxte61wk4t821" path="res://scn/main.gd" id="1_shkxj"]
 [ext_resource type="Script" uid="uid://y18k6ocw5off" path="res://scn/camera_2d.gd" id="2_d5qbh"]
@@ -92,6 +92,7 @@ script = ExtResource("1_shkxj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(641, 386)
+zoom = Vector2(2, 2)
 script = ExtResource("2_d5qbh")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

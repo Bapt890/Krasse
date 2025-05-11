@@ -19,6 +19,5 @@ func _process(_delta):
 				purple += 1
 			1:
 				green += 1
-	print(purple/get_used_cells().size())
 	bar.material.set_shader_parameter("purple_team", purple/get_used_cells().size())
 	bar.material.set_shader_parameter("green_team", 1 - green/get_used_cells().size())
