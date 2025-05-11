@@ -1,7 +1,8 @@
 res://scn/Main.tscn
 res://scn/bar.gdshader
-res://scn/Unit.tscn
+res://scn/UIManager.gd
+res://ResourceManager.gd
 res://scn/Resource.tscn
 res://scn/base.tscn
 res://scn/spawner.tscn
-res://scn/camera_2d.gd
+res://scn/Unit.tscn
