@@ -21,8 +21,5 @@ func update_visual(): #Fonction qui change la couleur de la base en fonction de 
 func _input_event(_viewport, event, _shape_idx): #Fonction créant un popup sur clic gauche d'un batiment
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 		if faction == Faction.PLAYER: # Popup seulement sur une base alliée
-			print("Base alliée cliquée")
 			BoutiquePanel.position = Vector2(500, 500) #Position du popup
 			BoutiquePanel.popup()
-		else:
-			print("Base ennemie : non interactif")

@@ -11,8 +11,8 @@ func _ready():
 	ResourceManager.resources_updated.connect(update_display)
 
 func update_display():
-	resource1.text = "1: %d" % ResourceManager.get_resource(0)
-	resource2.text = "2: %d" % ResourceManager.get_resource(1)
+	$HUD/ResourceDisplay/TextureRectRes1/HBoxContainer/Label.text = "x %d" % ResourceManager.get_resource(0)
+	$HUD/ResourceDisplay/TextureRectRes2/HBoxContainer/Label.text = "x %d" % ResourceManager.get_resource(1)
 
 func _process(delta):
 	if total_time > 0:

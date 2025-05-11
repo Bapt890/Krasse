@@ -28,6 +28,3 @@ func _on_cancel_pressed():
 func buy_unit(type : int, cost: int):
 	if ResourceManager.resources[type] >= cost:
 		ResourceManager.substractResource(type, cost)
-		print("Achat avec" + str(type))
-	else:
-		print("Pas achat" + str(type))

@@ -1,12 +1,12 @@
-Label
+TextureRect
 HBoxContainer
+Label
 CanvasLayer
 Node
 AnimationPlayer
 Timer
 Sprite2D
 Control
-TextureRect
 ProgressBar
 ColorRect
 CollisionShape2D
