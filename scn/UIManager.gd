@@ -5,6 +5,7 @@ var total_time := 300.0  # 5 minutes (compte à rebours)
 func _ready():
 	update_display()
 	ResourceManager.resources_updated.connect(update_display)
+	menu_Button.pressed.connect(_on_menuButton_pressed)
 
 func update_display():
 	$HUD/ResourceDisplay/TextureRectRes1/HBoxContainer/Label.text = "x %d" % ResourceManager.get_resource(0)
@@ -30,3 +31,5 @@ func _process(delta):
 		var tween = create_tween()
 		tween.tween_property($HUD/EndScreen, "modulate:a", 1, 0.5)
 	
+func _on_menuButton_pressed():
+	get_tree().change_scene_to_file("res://MainMenu.tscn")

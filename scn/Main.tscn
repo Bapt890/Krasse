@@ -586,6 +586,16 @@ stretch_mode = 0
 
 [node name="MinimapFrame" type="ColorRect" parent="UIManager/HUD"]
 custom_minimum_size = Vector2(300, 300)
+[node name="TextureRect2" type="TextureRect" parent="UIManager/HUD"]
+offset_left = 1552.0
+offset_top = 944.0
+offset_right = 2064.0
+offset_bottom = 1156.0
+scale = Vector2(0.600315, 0.537059)
+texture = ExtResource("10_wjl8o")
+
+[node name="MenuButton" type="Button" parent="UIManager/HUD/TextureRect2"]
+layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -747,6 +757,14 @@ theme_override_fonts/font = ExtResource("6_rk6lf")
 theme_override_font_sizes/font_size = 25
 text = "Menu"
 horizontal_alignment = 1
+offset_left = -445.368
+offset_top = -152.416
+offset_right = 74.6317
+offset_bottom = 67.5837
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.754845, 0.424904)
+action_mode = 0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -2
