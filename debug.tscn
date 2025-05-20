@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://crsxb55l68tie"]
+
+[ext_resource type="AudioStream" uid="uid://ch8vmnjrjfenq" path="res://snd/fx/boom1.mp3" id="1_1uwqr"]
+
+[node name="Debug" type="AudioStreamPlayer"]
+stream = ExtResource("1_1uwqr")

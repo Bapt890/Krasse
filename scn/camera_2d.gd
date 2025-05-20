@@ -1,9 +1,13 @@
 extends Camera2D
 
-var speed = 800
+var speed : float
+var base_speed = 800
 
 var edge_margin = 20
 var cam_limit : Vector2 = Vector2(6650, 2800)
+
+func _ready():
+	speed = base_speed / zoom.x
 
 func _process(delta):
 	var direction = Vector2.ZERO
@@ -39,21 +43,24 @@ func _process(delta):
 	
 	global_position.x = clamp(global_position.x, 960 / zoom.x, cam_limit.x - 960 / zoom.x)
 	global_position.y = clamp(global_position.y, 540  / zoom.y, cam_limit.y - 540  / zoom.y)
+	
+	if Input.is_action_just_pressed("zoom_up"): _zoom_camera(zoom_speed)
+	if Input.is_action_just_pressed("zoom_down"): _zoom_camera(-zoom_speed)
 
 # Zoom de la caméra
 var zoom_speed := 0.1
-var min_zoom := 0.5
-var max_zoom := 2.0
+var min_zoom := 0.4
+var max_zoom := 0.8
 
-func _unhandled_input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
-			_zoom_camera(zoom_speed)
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
-			_zoom_camera(-zoom_speed)
+#func _unhandled_input(event):
+	#if event is InputEventMouseButton:
+		#if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
+			#_zoom_camera(zoom_speed)
+		#elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
+			#_zoom_camera(-zoom_speed)
 
 func _zoom_camera(amount):
 	zoom += Vector2(amount, amount)
 	zoom.x = clamp(zoom.x, min_zoom, max_zoom)
 	zoom.y = clamp(zoom.y, min_zoom, max_zoom)
-	speed = 800 / zoom.x
+	speed = base_speed / zoom.x

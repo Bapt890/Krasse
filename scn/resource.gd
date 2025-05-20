@@ -19,6 +19,7 @@ func _ready():
 	await tween.finished
 	$AnimationPlayer.play("new_animation")
 
-func _on_area_entered(_area):
-	ResourceManager.addResource(type, amount)
-	queue_free() # Supprime l'objet de la scène
+func _on_area_entered(area):
+	if area.is_in_group("purple"):
+		ResourceManager.addResource(type, amount)
+		queue_free() # Supprime l'objet de la scène

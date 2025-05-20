@@ -1,8 +1,28 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0m6ngdoufvxi"]
+[gd_scene load_steps=32 format=3 uid="uid://d0m6ngdoufvxi"]
 
 [ext_resource type="Script" uid="uid://bj6y0rxnoj3jo" path="res://scn/unit.gd" id="1_c34hy"]
 [ext_resource type="Texture2D" uid="uid://bor4ubqt40w72" path="res://img/unit/standard_purple.png" id="2_f4pb8"]
 [ext_resource type="Texture2D" uid="uid://cawac3vcddfyc" path="res://img/unit/placeholder.png" id="2_kqw1m"]
+[ext_resource type="Texture2D" uid="uid://cmau1i6w53kdh" path="res://img/unit/boom_purple.png" id="3_s8np6"]
+[ext_resource type="Texture2D" uid="uid://rsfn5g55gigt" path="res://img/unit/boom/p1.png" id="4_083hs"]
+[ext_resource type="Texture2D" uid="uid://gamb0275sul" path="res://img/unit/boom/p2.png" id="5_6x5ed"]
+[ext_resource type="Texture2D" uid="uid://8rmalinmcm71" path="res://img/unit/boom/p3.png" id="6_fvcdj"]
+[ext_resource type="Texture2D" uid="uid://c1h3n3fl6k8td" path="res://img/unit/boom/p4.png" id="7_ouxjs"]
+[ext_resource type="Texture2D" uid="uid://b3jta7t6b570d" path="res://img/unit/boom/p5.png" id="8_02l4m"]
+[ext_resource type="Texture2D" uid="uid://dnx132i237ok6" path="res://img/unit/boom/p6.png" id="8_2uncr"]
+[ext_resource type="Texture2D" uid="uid://cea6n11o1umvq" path="res://img/unit/boom/p7.png" id="9_xhb3u"]
+[ext_resource type="Texture2D" uid="uid://blopkvhdes4d7" path="res://img/unit/boom/p8.png" id="10_4d1ou"]
+[ext_resource type="Texture2D" uid="uid://dcvkmw5lkxt3g" path="res://img/unit/boom/p9.png" id="11_o2b00"]
+[ext_resource type="Texture2D" uid="uid://dowpu8ph13f1s" path="res://img/unit/boom_green.png" id="12_3lhyy"]
+[ext_resource type="Texture2D" uid="uid://botuquu8ux3j8" path="res://img/unit/boom/g1.png" id="13_3lhyy"]
+[ext_resource type="Texture2D" uid="uid://5v3m4yrc3c73" path="res://img/unit/boom/g2.png" id="14_02l4m"]
+[ext_resource type="Texture2D" uid="uid://bmb4ii7lyxumh" path="res://img/unit/boom/g3.png" id="15_stany"]
+[ext_resource type="Texture2D" uid="uid://cm5u4pwba5ksu" path="res://img/unit/boom/g4.png" id="16_4ovkn"]
+[ext_resource type="Texture2D" uid="uid://bv3tux2f4gxxg" path="res://img/unit/boom/g5.png" id="17_234tm"]
+[ext_resource type="Texture2D" uid="uid://dxsj5qgnwbuam" path="res://img/unit/boom/g6.png" id="18_lo7qx"]
+[ext_resource type="Texture2D" uid="uid://cuwsg2mf7d1dm" path="res://img/unit/boom/g7.png" id="19_bbwwi"]
+[ext_resource type="Texture2D" uid="uid://cxs6iecixbcu2" path="res://img/unit/boom/g8.png" id="20_elhkq"]
+[ext_resource type="Texture2D" uid="uid://bggkssde8rl7q" path="res://img/unit/boom/g9.png" id="21_kj52d"]
 
 [sub_resource type="Curve2D" id="Curve2D_c34hy"]
 resource_local_to_scene = true
@@ -20,6 +40,110 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0.2, 0.2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_f4pb8")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Area2DCollider/CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(96, 96)]
+}
+
+[sub_resource type="Animation" id="Animation_02l4m"]
+resource_name = "explode"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.152404, 0.208333, 0.258333, 0.308333, 0.366667, 0.433333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_s8np6"), ExtResource("4_083hs"), ExtResource("5_6x5ed"), ExtResource("6_fvcdj"), ExtResource("7_ouxjs"), ExtResource("8_02l4m"), ExtResource("8_2uncr"), ExtResource("9_xhb3u"), ExtResource("10_4d1ou"), ExtResource("11_o2b00")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(0.35, 0.35), Vector2(0.5, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Area2DCollider/CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(96, 96), Vector2(96, 96), Vector2(640, 640)]
+}
+
+[sub_resource type="Animation" id="Animation_35vji"]
+resource_name = "explode_g"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.150014, 0.2, 0.248917, 0.3, 0.366667, 0.433333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("12_3lhyy"), ExtResource("13_3lhyy"), ExtResource("14_02l4m"), ExtResource("15_stany"), ExtResource("16_4ovkn"), ExtResource("17_234tm"), ExtResource("18_lo7qx"), ExtResource("19_bbwwi"), ExtResource("20_elhkq"), ExtResource("21_kj52d")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(0.35, 0.35), Vector2(0.5, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Area2DCollider/CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(96, 96), Vector2(96, 96), Vector2(640, 640)]
 }
 
 [sub_resource type="Animation" id="Animation_kqw1m"]
@@ -41,13 +165,16 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sfyiv"]
 _data = {
 &"RESET": SubResource("Animation_f4pb8"),
+&"explode": SubResource("Animation_02l4m"),
+&"explode_g": SubResource("Animation_35vji"),
 &"new_animation": SubResource("Animation_kqw1m")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqw1m"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stany"]
 size = Vector2(96, 51)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c34hy"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02l4m"]
+resource_local_to_scene = true
 size = Vector2(96, 96)
 
 [node name="Unit" type="Node2D"]
@@ -82,12 +209,12 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2DSelect"]
 position = Vector2(0, -3.5)
-shape = SubResource("RectangleShape2D_kqw1m")
+shape = SubResource("RectangleShape2D_stany")
 
 [node name="Area2DCollider" type="Area2D" parent="Path2D/PathFollow2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2DCollider"]
-shape = SubResource("RectangleShape2D_c34hy")
+shape = SubResource("RectangleShape2D_02l4m")
 
 [node name="ProgressBarHP" type="ProgressBar" parent="Path2D/PathFollow2D"]
 visible = false
@@ -108,6 +235,9 @@ show_percentage = false
 one_shot = true
 autostart = true
 
+[node name="TimerUpdateRole" type="Timer" parent="."]
+autostart = true
+
 [connection signal="area_entered" from="Path2D/PathFollow2D/Area2DSelect" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Path2D/PathFollow2D/Area2DSelect" to="." method="_on_area_2d_area_exited"]
 [connection signal="mouse_entered" from="Path2D/PathFollow2D/Area2DSelect" to="." method="_on_mouse_entered"]
@@ -115,3 +245,4 @@ autostart = true
 [connection signal="area_entered" from="Path2D/PathFollow2D/Area2DCollider" to="." method="_on_area_2d_collider_area_entered"]
 [connection signal="mouse_entered" from="Path2D/PathFollow2D/Area2DCollider" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Path2D/PathFollow2D/Area2DCollider" to="." method="_on_mouse_exited"]
+[connection signal="timeout" from="TimerUpdateRole" to="." method="_on_timer_update_role_timeout"]

@@ -1,9 +1,5 @@
 extends Node
 
-@onready var label: Label = $HUD/TimerLabel
-@onready var resource1 = $HUD/ResourceDisplay/Resource1
-@onready var resource2 = $HUD/ResourceDisplay/Resource2
-
 var total_time := 300.0  # 5 minutes (compte à rebours)
 
 func _ready():
@@ -17,9 +13,20 @@ func update_display():
 func _process(delta):
 	if total_time > 0:
 		total_time -= delta
-		var minutes = int(total_time) / 60
-		var seconds = int(total_time) % 60
+		var minutes = total_time / 60
+		var seconds = fmod(total_time, 60)
 		$HUD/TextureRect/Label.text = "%02d:%02d" % [minutes, seconds]
 	else:
 		$HUD/TextureRect/Label.text = "00:00"
+	
+	if total_time <= 0 and !$HUD/EndScreen.visible:
+		$HUD/EndScreen.show()
+		$HUD/EndScreen/ColorRect/VBoxContainer/ColorRect/MapRect.texture = $HUD/MinimapFrame/Minimap.texture
+		$HUD/EndScreen/ColorRect/VBoxContainer/HBoxContainer/LabelPurple.text = $HUD/HBoxContainer/LabelPurple.text
+		$HUD/EndScreen/ColorRect/VBoxContainer/HBoxContainer/LabelGreen.text = $HUD/HBoxContainer/LabelGreen.text
+		$HUD/EndScreen/ColorRect/VBoxContainer/LabelResult.text = "Vous avez gagne !" \
+			if int($HUD/EndScreen/ColorRect/VBoxContainer/HBoxContainer/LabelPurple.text) > int($HUD/EndScreen/ColorRect/VBoxContainer/HBoxContainer/LabelGreen.text) \
+			else "Vous avez perdu !"
+		var tween = create_tween()
+		tween.tween_property($HUD/EndScreen, "modulate:a", 1, 0.5)
 	

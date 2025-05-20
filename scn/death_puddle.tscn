@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://71jvr8fd3fmi"]
+
+[ext_resource type="Texture2D" uid="uid://dcvkmw5lkxt3g" path="res://img/unit/boom/p9.png" id="1_d85hf"]
+[ext_resource type="Script" uid="uid://olsodcyp7o76" path="res://death_puddle.gd" id="2_wbfvy"]
+[ext_resource type="AudioStream" uid="uid://7xbj8yx83tbf" path="res://snd/fx/pop1.mp3" id="3_dt4r6"]
+
+[sub_resource type="Animation" id="Animation_wbfvy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_d85hf"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.966667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dt4r6"]
+_data = {
+&"RESET": SubResource("Animation_wbfvy"),
+&"new_animation": SubResource("Animation_d85hf")
+}
+
+[node name="DeathPuddle" type="Sprite2D"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_d85hf")
+script = ExtResource("2_wbfvy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dt4r6")
+}
+autoplay = "new_animation"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dt4r6")
+max_distance = 3000.0
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

@@ -4,9 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://cy62nhydue8s6" path="res://img/building/one_purple.png" id="2_pnv5i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pnv5i"]
-radius = 157.539
+radius = 110.13
 
 [node name="Base" type="Area2D"]
+z_index = 1
 collision_layer = 4
 script = ExtResource("1_uc46k")
 faction = 0
